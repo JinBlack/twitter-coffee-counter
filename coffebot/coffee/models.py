@@ -47,7 +47,4 @@ class CoffeeTransaction(models.Model):
         transaction = cls(coffee_user=user, operation=operation, amount=amount)
         return transaction
 
-    def __unicode__(self):
-        return "<"+self.id + ", " + self.coffee_user + ", " + self.date + ", " + self.operation + ", " + self.amount + ">"
-
 
