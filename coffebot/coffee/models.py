@@ -1,5 +1,8 @@
 from django.db import models
 from djchoices import *
+from singleton_models.models import SingletonModel
+from datetime import datetime
+from datetime import time
 
 class Operation(DjangoChoices):
     TopUp = ChoiceItem('TOP')
@@ -38,7 +41,8 @@ class CoffeeUser(models.Model):
 
 class CoffeeTransaction(models.Model):
     coffee_user = models.ForeignKey('CoffeeUser', on_delete=models.SET_NULL, null=True)
-    date = models.DateField(auto_now_add=True, null=False)
+    coffee_time = models.TimeField(auto_now_add=True,default=time())
+    coffee_date = models.DateField(auto_now_add=True,default=datetime.today())
     operation = models.CharField(max_length=3, choices=Operation.choices, null=False)
     amount = models.PositiveIntegerField(default=1)
 
@@ -47,4 +51,18 @@ class CoffeeTransaction(models.Model):
         transaction = cls(coffee_user=user, operation=operation, amount=amount)
         return transaction
 
+    def __unicode__(self):
+        return "%s %s-%s %s %i" % (self.coffee_date, self.coffee_time, self.coffee_user.user_name, self.operation, self.amount)
+
+class CoffeeConfig(SingletonModel):
+    last_processed_tweet = models.CharField(max_length=50, default='')
+    last_updated = models.DateTimeField(auto_now=True)
+
+    @classmethod
+    def get(cls):
+        try:
+            c = cls.objects.all()[0]
+        except Exception, e:
+            c = cls()
+        return c
 

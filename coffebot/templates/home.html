@@ -1,0 +1,69 @@
+{% load staticfiles %}
+{% load chartit %}
+<html lang="en">
+<head>
+	<script type="text/javascript" src="{% static "js/jQuery-1.7.2.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/Highcharts-2.2.5/js/highcharts.js" %}"></script>
+	<!-- <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'> -->
+	<link href='http://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		{% include "coffee.css" %}
+	</style>
+    {{ monthly_coffee_chart|load_charts:"monthly_coffee_chart" }}
+	<title>NECST Coffee Bot</title>
+</head>
+<body>
+<div id="wrapper">
+	<header><h1><strong>NECST Coffee Bot</strong></h1></header>
+	<div id="main_content">
+		<div id="left_column">
+		<div class="statistics">
+			Coffees drunk today: <span class='counter'>{{total_coffees_today}}</span>
+			<br>
+			Coffees drunk this month: <span class='counter'>{{total_coffees_month}}</span>
+			<br>
+			Coffees drunk total: <span class='counter'>{{overall_coffees}}</span>
+			<br>
+			<br>
+			Coffee addict this month: <span class='top_user'>{{top_drinker_user_name}}</span> (@{{top_drinker_twitter}})
+		</div>
+
+		<div id="monthly_coffee_chart"></div>
+		</div>
+		<div id="right_column">
+			<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+			<script>
+			new TWTR.Widget({
+			  version: 2,
+			  type: 'search',
+			  search: '@NCBot',
+			  interval: 10000,
+			  title: '',
+			  subject: 'Last Coffees',
+			  width: 300,
+			  height: 500,
+			  theme: {
+			    shell: {
+    			  background: 'transparent',
+			      color: '#ffffff'
+			    },
+			    tweets: {
+			      background: 'transparent',
+			      color: 'white',
+			      links: '#1985b5'
+			    }
+			  },
+			  features: {
+			    scrollbar: true,
+			    loop: false,
+			    live: true,
+			    behavior: 'default'
+			  }
+			}).render().start();
+			</script>
+		</div>
+	</div>
+	<footer>NECST Lab (c)2012</footer>
+</div>
+</body>
+</html>

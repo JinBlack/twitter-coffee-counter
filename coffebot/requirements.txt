@@ -1,3 +1,8 @@
 django
+South
 django-choices
 twitter
+django-singletons
+django-bootstrapped
+simplejson
+django_chartit

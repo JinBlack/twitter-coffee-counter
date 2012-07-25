@@ -1,0 +1,73 @@
+header {
+	color: white;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+footer {
+	color: white;
+	padding-top: 40px;
+	text-align: center;
+	clear: both;
+}
+
+html { 
+    /*background: url(http://blog.felter.it/wp-content/uploads/wallpaper-014-coffee.jpg)*/
+    /*background: url(http://good-wallpapers.com/pictures/5305/Coffe%20Sugar%20Coffee.jpg)*/
+    background: url(http://th03.deviantart.net/fs13/PRE/f/2007/028/f/2/Coffee_Wallpaper_by_blakk.jpg)
+        no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+	/*font-family: 'Crete Round', serif;*/
+	font-family: 'Codystar', cursive;
+}
+
+#wrapper {
+	margin: auto;
+	width: 90%;
+}
+
+#main_content {
+	margin-top: 20px;
+}
+
+#right_column {
+	margin-right: 15px;
+	float: right;
+	width: 300px;
+}
+
+#left_column {
+	float: left;
+	width: auto;
+}
+
+.statistics {
+	color: white;
+	background-color: transparent;
+	font-size: 30px;
+	/*border: 1px solid grey;*/
+	border-radius: 4px; 
+	-moz-border-radius: 4px; 
+	-webkit-border-radius: 4px;
+	margin-bottom: 40px; 
+}
+
+.counter, .top_user {
+	color: #3BB0E2;
+}
+
+#monthly_coffee_chart {
+	margin-top: 20px;
+	height: 300px;
+	width: 500px;
+}
+
+.twtr-ft {
+	display: none;
+}
